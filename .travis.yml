@@ -5,7 +5,7 @@ node_js:
 install: 
   - yarn
 before_script:
-  - yarn build-test
+  - echo "Run Before Script"
 script:
   - yarn coverage
 after_success:

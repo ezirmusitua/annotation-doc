@@ -1,5 +1,5 @@
 ## JS API Doc
-[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)](https://travis-ci.org/ezirmusitua/jsAPIdoc)[![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)(https://travis-ci.org/ezirmusitua/jsAPIdoc)  
+[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)](https://travis-ci.org/ezirmusitua/jsAPIdoc)[![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)  
 
 Add jsdoc in your API, and use this tool to generate web doc and basic debug tool  
 

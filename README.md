@@ -1,5 +1,5 @@
 ## JS API Doc
-[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)](https://travis-ci.org/ezirmusitua/jsAPIdoc)[![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)  
+[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)](https://travis-ci.org/ezirmusitua/jsAPIdoc)[![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)[![codebeat badge](https://codebeat.co/badges/03628ad1-e2c7-41ba-87fb-544c54accf7b)](https://codebeat.co/projects/github-com-ezirmusitua-jsapidoc-master)   
 
 Add jsdoc in your API, and use this tool to generate web doc and basic debug tool  
 
@@ -29,9 +29,7 @@ jsAPI try <route@name>
 Issues & PR are welcome      
 
 ### Todos
- - [ ] Let me start with some tests
  - [ ] Just Code  
- - [ ] Add CodeBeat badge
  - [ ] Add NPM downloads badge      
 
 ### License  

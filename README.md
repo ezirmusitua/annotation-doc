@@ -1,6 +1,6 @@
 ## JS API Doc
-**Post some [badges](http://shields.io/) Here**
-[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)][![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)(https://travis-ci.org/ezirmusitua/jsAPIdoc)[![npm](https://img.shields.io/npm/dw/jsAPIdoc.svg)]()  
+[![Build Status](https://travis-ci.org/ezirmusitua/jsAPIdoc.svg?branch=master)][![Coverage Status](https://coveralls.io/repos/github/ezirmusitua/jsAPIdoc/badge.svg?branch=master)](https://coveralls.io/github/ezirmusitua/jsAPIdoc?branch=master)(https://travis-ci.org/ezirmusitua/jsAPIdoc)  
+
 Add jsdoc in your API, and use this tool to generate web doc and basic debug tool  
 
 ### Features  
@@ -31,7 +31,8 @@ Issues & PR are welcome
 ### Todos
  - [ ] Let me start with some tests
  - [ ] Just Code  
- - [ ] Add Codebeat badge    
+ - [ ] Add CodeBeat badge
+ - [ ] Add NPM downloads badge      
 
 ### License  
 MIT

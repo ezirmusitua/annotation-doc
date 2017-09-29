@@ -1,0 +1,13 @@
+{
+  "name": "jsAPIdoc",
+  "version": "0.0.1",
+  "description": "API document with jsdoc",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node ./lib/index.js",
+    "test": "echo"
+  },
+  "repository": "git@github.com:ezirmusitua/jsAPIdoc.git",
+  "author": "ezirmusitua <jferroal@gmail.com>",
+  "license": "MIT"
+}

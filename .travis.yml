@@ -1,0 +1,16 @@
+language: node_js
+cache: yarn
+node_js:
+  - "6"
+  - "7"
+  - "8"
+install: 
+  - yarn
+before_script:
+  - echo "Before Script"
+script:
+  - yarn test
+after_success:
+  - echo "After Success"
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  

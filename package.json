@@ -5,9 +5,18 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "node ./lib/index.js",
-    "test": "echo"
+    "test": "./node_modules/.bin/mocha",
+    "coverage": "nyc --reporter=lcov ./node_modules/.bin/mocha"
   },
   "repository": "git@github.com:ezirmusitua/jsAPIdoc.git",
   "author": "ezirmusitua <jferroal@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1"
+  },
+  "dependencies": {
+    "doctrine": "^2.0.0"
+  }
 }

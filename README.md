@@ -30,7 +30,8 @@ Issues & PR are welcome
 
 ### Todos
  - [ ] Just Code  
- - [ ] Add NPM downloads badge      
+ - [ ] Add NPM downloads badge
+ - [ ] Support Node < 8.0      
 
 ### License  
 MIT

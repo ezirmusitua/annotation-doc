@@ -1,0 +1,6 @@
+/**
+ * @name getPokemon
+ * @param {String} pokemonName
+ * @returns {{pokemon}}
+ * @throws PokemonNotFound
+ */

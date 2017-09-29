@@ -1,6 +1,6 @@
 const { describe, it } = require('mocha');
 const expect = require('chai').expect;
-const indexOf = require('../lib').indexOf;
+const indexOf = require('../lib/index').indexOf;
 
 describe('Index', function () {
     describe('indexOf', function () {

@@ -1,0 +1,10 @@
+/**
+ * @name getPokemon
+ * @param {String} pokemonName
+ * @returns {{pokemon}}
+ * @throws PokemonNotFound
+ */
+def getPokemon(pokemonName) {
+    if (!pokemonName) throw new Error('PokemonNotFound');
+    return {pokemon: {name: 'BaKa'}};
+}

@@ -110,9 +110,12 @@ describe('Parser', () => {
         });
         it('should parse and return a ParsedResult instance', async () => {
             const filePath = __dirname + '/jsdoc-sample-rich.txt';
-            const fp = new FileParser(filePath);
-            expect(await fp.parse()).to.be.an.instanceOf(ParseResult);
             expect(await FileParser.parse(filePath)).to.be.an.instanceOf(ParseResult);
         });
+        it('should able to dump content to docs/api-name.json', async () => {
+            const filePath = __dirname + '/jsdoc-sample-rich.txt';
+            const outDir = __dirname + '/docs';
+            expect(await (await (new FileParser(filePath)).parse()).dump(outDir)).to.equal(undefined);
+        })
     })
 });

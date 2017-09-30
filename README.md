@@ -32,6 +32,7 @@ Issues & PR are welcome
  - [ ] Just Code  
  - [ ] Add NPM downloads badge
  - [ ] Support Node < 8.0      
+ - [ ] Fix throw in promise of read json
 
 ### License  
 MIT

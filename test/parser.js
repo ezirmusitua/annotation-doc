@@ -1,4 +1,4 @@
-const { describe, it } = require('mocha');
+const { describe, it, beforeEach, afterEach } = require('mocha');
 const expect = require('chai').expect;
 const { Tag, ParseResult, FileParser } = require('../lib/parser');
 
@@ -65,10 +65,8 @@ describe('Parser', () => {
             "source": "",
         },
     ];
-    const defaultParseResultConfig = {
-        onlyTags: true,
-        fieldsToIgnore: [ 'line', 'source' ],
-    };
+    const defaultFieldsToIgnore = [ 'line', 'source' ];
+
     describe('Tag', () => {
         it('should set isBlockTitle to true if tag is name', () => {
             const _tag = {
@@ -86,36 +84,48 @@ describe('Parser', () => {
     });
 
     describe('ParsedResult', () => {
-        it('should use given config or default config', () => {
-            const res = [].concat(sampleParsedRes);
-            const pr1 = new ParseResult(res);
-            expect(pr1._config).to.deep.equal(defaultParseResultConfig);
-            const newConfig = { onlyTags: false, fieldsToIgnore: [ 'type', 'line', 'source' ] };
-            const pr2 = new ParseResult(res, newConfig);
-            expect(pr2._config).to.deep.equal(newConfig);
+        let sampleRes = [];
+        beforeEach(() => {
+            sampleRes = sampleRes.concat(sampleParsedRes);
+        });
+        afterEach(() => {
+            sampleRes = [];
+        });
+        it('should use given files to drop or the default one', () => {
+            const pr1 = new ParseResult(sampleRes);
+            expect(pr1.fieldsToIgnore).to.deep.equal(defaultFieldsToIgnore);
+            const fieldsToIgnore = [ 'type', 'line', 'source' ];
+            const pr2 = new ParseResult(sampleRes, fieldsToIgnore);
+            expect(pr2.fieldsToIgnore).to.deep.equal(fieldsToIgnore);
+        });
+        it('should drop the fields in fieldsToDrop for res', () => {
+            const pr = new ParseResult(sampleRes);
+            Object.keys(pr.blockTags).forEach((k) => {
+                const invalidTag = pr.blockTags[ k ].find((tag) => defaultFieldsToIgnore.indexOf(tag.tag) > -1);
+                expect(invalidTag).to.be.undefined;
+            });
         });
         it('should classify tags with block use the @name tag', () => {
-            const res = [].concat(sampleParsedRes);
-            const pr = new ParseResult(res);
+            const pr = new ParseResult(sampleRes);
             expect(Object.keys(pr.blockTags)).to.deep.equal([ 'getPokemonByName', 'getPokemonById' ])
         })
     });
 
     describe('FileParser', () => {
+        const filePath = __dirname + '/jsdoc-sample-rich.txt';
+        const notExistsPath = 'does-not-exists-path';
         it('should throw error if file does not exists', () => {
-            const eFn1 = () => new FileParser('does-not-exists-path');
+            const eFn1 = () => new FileParser(notExistsPath);
             expect(eFn1).to.throw();
-            const eFn2 = () => FileParser.parse('does-not-exists-path');
+            const eFn2 = () => FileParser.parse(notExistsPath);
             expect(eFn2).to.throw();
         });
         it('should parse and return a ParsedResult instance', async () => {
-            const filePath = __dirname + '/jsdoc-sample-rich.txt';
             expect(await FileParser.parse(filePath)).to.be.an.instanceOf(ParseResult);
         });
         it('should able to dump content to docs/api-name.json', async () => {
-            const filePath = __dirname + '/jsdoc-sample-rich.txt';
             const outDir = __dirname + '/docs';
-            expect(await (await (new FileParser(filePath)).parse()).dump(outDir)).to.equal(undefined);
+            expect(await (await (new FileParser(filePath)).parse()).dump(outDir)).to.be.undefined;
         })
     })
 });

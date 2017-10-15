@@ -1,5 +1,5 @@
 const { describe, it, xit } = require('mocha');
-const { existsSync, readFileSync, rmdirSync, unlinkSync } = require('fs');
+const { existsSync, readFileSync, rmdirSync, unlinkSync, writeFileSync } = require('fs');
 const expect = require('chai').expect;
 const { File, JsonFile, DixFile, NormalFile } = require('../lib/file');
 
@@ -7,15 +7,21 @@ describe('File', () => {
     describe('construct by extension', () => {
         it('should create JsonFile while file extension is json', () => {
             const filePath = __dirname + '/tmp.json';
-            expect(new File(filePath)).to.be.an.instanceOf(JsonFile)
+            writeFileSync(filePath, '{"name": "demoJsonFile"}');
+            expect(new File(filePath)).to.be.an.instanceOf(JsonFile);
+            unlinkSync(filePath);
         });
         it('should create DixFile while file extension is dix', () => {
             const filePath = __dirname + '/tmp.dix';
-            expect(new File(filePath)).to.be.an.instanceOf(DixFile)
+            writeFileSync(filePath, '{"name": "demoJsonFile"}');
+            expect(new File(filePath)).to.be.an.instanceOf(DixFile);
+            unlinkSync(filePath);
         });
         it('should create NormalFile while file extension is not above', () => {
             const filePath = __dirname + '/tmp.txt';
-            expect(new File(filePath)).to.be.an.instanceOf(NormalFile)
+            writeFileSync(filePath, '{"name": "demoJsonFile"}');
+            expect(new File(filePath)).to.be.an.instanceOf(NormalFile);
+            unlinkSync(filePath);
         });
     });
     describe('validateFilePath', () => {

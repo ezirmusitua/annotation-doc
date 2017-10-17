@@ -18,6 +18,7 @@
     "nyc": "^11.2.1"
   },
   "dependencies": {
-    "comment-parser": "^0.4.2"
+    "comment-parser": "^0.4.2",
+    "nodejieba": "^2.2.5"
   }
 }

@@ -30,9 +30,7 @@ Issues & PR are welcome
 
 ### Todos
  - [ ] Just Code  
- - [ ] Add NPM downloads badge
  - [ ] Support Node < 8.0      
- - [ ] Fix throw in promise of read json
 
 ### License  
 MIT

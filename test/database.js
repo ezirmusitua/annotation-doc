@@ -2,7 +2,7 @@ const { describe, it, xit } = require('mocha');
 const expect = require('chai').expect;
 const { ContentParser } = require('../lib/database');
 
-describe('JieBaParser', () => {
+describe('ContentParser', () => {
     describe('lint', () => {
         it('should remove symbols and insert space correctly', () => {
             const sentence = '我是拖拉机学院手扶拖拉机专业的. 不用多久, 我就会升职加薪, 当上CEO, 走上人生巅峰.';
@@ -22,16 +22,16 @@ describe('JieBaParser', () => {
 });
 
 describe('IndexGenerator', () => {
-    describe('organize', () => {
-        it('should organize parsed as i want', () => {
+    describe('generate', () => {
+        it('should generate index file as i want', () => {
             expect(false).to.equal(true);
         });
     });
 });
 
 describe('Executor', () => {
-    describe('query', () => {
-        it('should query correctly', () => {
+    describe('construct', () => {
+        it('should work correctly', () => {
             expect(false).to.equal(true);
         });
     });

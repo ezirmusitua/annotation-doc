@@ -106,7 +106,6 @@ describe('CustomSet', () => {
             const cs1 = new CustomSet([ 1, 2 ]);
             const cs2 = new CustomSet([ 2, 3 ]);
             const cs3 = cs1.difference(cs2);
-            console.log(cs3);
             expect(cs3 instanceof CustomSet).to.equal(true);
             expect(cs3.has(1)).to.equal(true);
             expect(cs3.has(2)).to.equal(false);

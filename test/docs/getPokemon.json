@@ -1,1 +1,1 @@
-[object Object],[object Object],[object Object],[object Object]
+[{"tag":"name","name":"getPokemon","isBlockTitle":true},{"tag":"param","name":"pokemonName","type":"String"},{"tag":"returns","type":"{pokemon}"},{"tag":"throws","name":"PokemonNotFound"}]

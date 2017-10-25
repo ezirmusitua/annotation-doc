@@ -1,6 +1,7 @@
-const { describe, it, xit } = require('mocha');
+const { describe, it } = require('mocha');
+const {CustomSet} = require('../lib/custom-set');
 const expect = require('chai').expect;
-const { ContentParser, IndexManager, setLike } = require('../lib/database');
+const { ContentParser, IndexManager, Executor } = require('../lib/database');
 
 describe('ContentParser', () => {
     const sentenceToParse = '我是拖拉机学院手扶拖拉机专业的. 不用多久, 我就会升职加薪, 当上CEO, 走上人生巅峰.';
@@ -16,7 +17,8 @@ describe('ContentParser', () => {
     });
     describe('parse', () => {
         it('should parse correctly', () => {
-            expect(ContentParser.parse(sentenceToParse)).to.deep.equal(parsedResult)
+            console.log(ContentParser.parse(sentenceToParse));
+            expect(ContentParser.parse(sentenceToParse)).to.deep.equal(CustomSet.fromArray(parsedResult))
         });
     });
 });
@@ -30,21 +32,38 @@ describe('IndexManager', () => {
     const manager = (new IndexManager()).handle(doc, parsedResult);
     describe('handle', () => {
         it('should generate map with doc name and doc parsed words', () => {
-            parsedResult.forEach(word => expect(manager.wordToDocMap[word].has(doc)).to.equal(true));
+            parsedResult.forEach(word => expect(manager.wordToDocMap[ word ].has(doc)).to.equal(true));
         });
     });
-    
+
     describe('get', () => {
         it('should get docs using word ', () => {
-            manager.get('CEO').forEach(d => expect(d).to.equal(doc)); 
+            manager.get('CEO').forEach(d => expect(d).to.equal(doc));
+        });
+    });
+
+    describe('dump', () => {
+        it('should throw error if no indexFile', () => {
+            expect(() => manager.dump()).to.throw();
         });
     });
 });
 
-describe('Executor', () => {
-    describe('construct', () => {
-        it('should work correctly', () => {
-            expect(false).to.equal(true);
+describe('Executor', async () => {
+    const executor = new Executor();
+    await executor.constructIndex(__dirname + '/demo-index');
+
+    describe('constructIndex', () => {
+        it('should work correctly', async () => {
+            expect(executor.indexManager.get('getPokemon').has('getPokemon.json')).to.equal(true);
+            expect(executor.indexManager.get('pokemonName').has('getPokemon.json')).to.equal(true);
+            expect(executor.indexManager.get('PokemonNotFound').has('getPokemon.json')).to.equal(true);
+        });
+    });
+
+    describe('constructIndex', () => {
+        it('should work correctly', async () => {
+            console.log(await executor.query('getPokemon'));
         });
     });
 });

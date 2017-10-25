@@ -17,7 +17,6 @@ describe('ContentParser', () => {
     });
     describe('parse', () => {
         it('should parse correctly', () => {
-            console.log(ContentParser.parse(sentenceToParse));
             expect(ContentParser.parse(sentenceToParse)).to.deep.equal(CustomSet.fromArray(parsedResult))
         });
     });
@@ -51,7 +50,7 @@ describe('IndexManager', () => {
 
 describe('Executor', async () => {
     const executor = new Executor();
-    await executor.constructIndex(__dirname + '/demo-index');
+    await executor.constructIndex();
 
     describe('constructIndex', () => {
         it('should work correctly', async () => {
@@ -61,7 +60,7 @@ describe('Executor', async () => {
         });
     });
 
-    describe('constructIndex', () => {
+    describe('query', () => {
         it('should work correctly', async () => {
             console.log(await executor.query('getPokemon'));
         });

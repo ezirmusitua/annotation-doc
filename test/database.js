@@ -1,5 +1,5 @@
 const { describe, it } = require('mocha');
-const {CustomSet} = require('../lib/custom-set');
+const { CustomSet } = require('../lib/custom-set');
 const expect = require('chai').expect;
 const { ContentParser, IndexManager, Executor } = require('../lib/database');
 
@@ -62,7 +62,14 @@ describe('Executor', async () => {
 
     describe('query', () => {
         it('should work correctly', async () => {
-            console.log(await executor.query('getPokemon'));
+            const res = await executor.query('getPokemon');
+            expect(res.length).to.equal(1);
+            expect(res[ 0 ]).to.deep.equal([
+                { tag: 'name', name: 'getPokemon', isBlockTitle: true },
+                { tag: 'param', name: 'pokemonName', type: 'String' },
+                { tag: 'returns', type: '{pokemon}' },
+                { tag: 'throws', name: 'PokemonNotFound' },
+            ]);
         });
     });
 });

@@ -63,19 +63,3 @@ describe('JsonFile', () => {
         });
     })
 });
-
-xdescribe('DixFile', () => {
-    describe('', () => {
-        it('should work like JsonFile', () => {
-            // Do nothing
-        });
-    });
-});
-
-xdescribe('NormalFile', () => {
-    describe('', () => {
-        it('should work like File', () => {
-            // Do nothing
-        });
-    });
-});

@@ -113,13 +113,6 @@ describe('Parser', () => {
 
     describe('FileParser', () => {
         const filePath = __dirname + '/jsdoc-sample-rich.txt';
-        const notExistsPath = 'does-not-exists-path';
-        it('should throw error if file does not exists', () => {
-            const eFn1 = () => new FileParser(notExistsPath);
-            expect(eFn1).to.throw();
-            const eFn2 = () => FileParser.parse(notExistsPath);
-            expect(eFn2).to.throw();
-        });
         it('should parse and return a ParsedResult instance', async () => {
             expect(await FileParser.parse(filePath)).to.be.an.instanceOf(ParseResult);
         });

@@ -38,11 +38,13 @@ describe('File', () => {
         });
     });
     describe('write', () => {
-        it('should write file correctly', async () => {
+        it('should write file correctly', (done) => {
             const filePath = __dirname + '/test.txt';
-            await File.write(filePath, 'abc');
-            expect(readFileSync(filePath, 'utf-8')).to.equal('abc');
-            unlinkSync(filePath);
+            File.write(filePath, 'abc').then(() => {
+                expect(readFileSync(filePath, 'utf-8')).to.equal('abc');
+                unlinkSync(filePath);
+                done();
+            });
         });
     })
 });

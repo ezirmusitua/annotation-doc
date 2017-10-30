@@ -48,28 +48,37 @@ describe('IndexManager', () => {
     });
 });
 
-describe('Executor', async () => {
+describe('Executor', () => {
     const executor = new Executor();
-    await executor.constructIndex();
+
 
     describe('constructIndex', () => {
-        it('should work correctly', async () => {
-            expect(executor.indexManager.get('getPokemon').has('getPokemon.json')).to.equal(true);
-            expect(executor.indexManager.get('pokemonName').has('getPokemon.json')).to.equal(true);
-            expect(executor.indexManager.get('PokemonNotFound').has('getPokemon.json')).to.equal(true);
+        it('should work correctly', () => {
+            executor.constructIndex().then(() => {
+                expect(executor.indexManager.get('getPokemon').has('getPokemon.json')).to.equal(true);
+                expect(executor.indexManager.get('pokemonName').has('getPokemon.json')).to.equal(true);
+                expect(executor.indexManager.get('PokemonNotFound').has('getPokemon.json')).to.equal(true);
+            });
         });
     });
 
     describe('query', () => {
-        it('should work correctly', async () => {
-            const res = await executor.query('getPokemon');
-            expect(res.length).to.equal(1);
-            expect(res[ 0 ]).to.deep.equal([
-                { tag: 'name', name: 'getPokemon', isBlockTitle: true },
-                { tag: 'param', name: 'pokemonName', type: 'String' },
-                { tag: 'returns', type: '{pokemon}' },
-                { tag: 'throws', name: 'PokemonNotFound' },
-            ]);
+        it('should work correctly', (done) => {
+            console.log('start query',);
+            executor.query('getPokemon').then(res => {
+                console.log('query: ', res);
+                expect(res.length).to.equal(1);
+                expect(res[ 0 ]).to.deep.equal([
+                    { tag: 'name', name: 'getPokemon', isBlockTitle: true },
+                    { tag: 'param', name: 'pokemonName', type: 'String' },
+                    { tag: 'returns', type: '{pokemon}' },
+                    { tag: 'throws', name: 'PokemonNotFound' },
+                ]);
+                done();
+            }).catch(err => {
+                console.error(err);
+                done();
+            }); 
         });
     });
 });

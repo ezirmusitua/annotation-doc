@@ -50,8 +50,6 @@ describe('IndexManager', () => {
 
 describe('Executor', () => {
     const executor = new Executor();
-
-
     describe('constructIndex', () => {
         it('should work correctly', () => {
             executor.constructIndex().then(() => {
@@ -65,7 +63,6 @@ describe('Executor', () => {
     describe('query', () => {
         it('should work correctly', (done) => {
             executor.query('getPokemon').then(res => {
-                console.log('query: ', res);
                 expect(res.length).to.equal(1);
                 expect(res[ 0 ]).to.deep.equal([
                     { tag: 'name', name: 'getPokemon', isBlockTitle: true },

@@ -1,0 +1,1 @@
+[{"tag":"name","name":"getPokemonById","isBlockTitle":true},{"tag":"param","name":"pokemonId","type":"String"},{"tag":"returns","type":"{pokemon}"},{"tag":"throws","name":"PokemonNotFound"}]

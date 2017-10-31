@@ -64,7 +64,6 @@ describe('Executor', () => {
 
     describe('query', () => {
         it('should work correctly', (done) => {
-            console.log('start query',);
             executor.query('getPokemon').then(res => {
                 console.log('query: ', res);
                 expect(res.length).to.equal(1);

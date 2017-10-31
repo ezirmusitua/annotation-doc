@@ -2,6 +2,7 @@ const { describe, it } = require('mocha');
 const { CustomSet } = require('../lib/custom-set');
 const expect = require('chai').expect;
 const { ContentParser, IndexManager, Executor } = require('../lib/database');
+const { Config } = require('../lib/config');
 
 describe('ContentParser', () => {
     const sentenceToParse = '我是拖拉机学院手扶拖拉机专业的. 不用多久, 我就会升职加薪, 当上CEO, 走上人生巅峰.';
@@ -49,6 +50,7 @@ describe('IndexManager', () => {
 });
 
 describe('Executor', () => {
+    Config.docs = __dirname + '/docs';
     const executor = new Executor();
     describe('constructIndex', () => {
         it('should work correctly', () => {
